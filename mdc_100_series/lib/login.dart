@@ -74,7 +74,6 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 // TODO: Add buttons (101)
                 TextButton(
-                  child: const Text('CANCEL'),
                   onPressed: () {
                     _usernameController.clear();
                     _passwordController.clear();
@@ -85,11 +84,11 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.all(Radius.circular(7.0)),
                     ),
                   ),
+                  child: const Text('CANCEL'),
                 ),
                 // TODO: Add an elevation to NEXT (103)
                 // TODO: Add a beveled rectangular border to NEXT (103)
                 ElevatedButton(
-                  child: const Text('NEXT'),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -101,6 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.all(Radius.circular(7.0)),
                     ),
                   ),
+                  child: const Text('NEXT'),
                 ),
               ],
             ),
