@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../model/product.dart';
 
@@ -26,12 +25,10 @@ class ProductCard extends StatelessWidget {
   final double imageAspectRatio;
   final Product product;
 
-  static const kTextBoxHeight = 65.0;
+  static const kTextBoxHeight = 120.0;
 
   @override
   Widget build(BuildContext context) {
-    final NumberFormat formatter = NumberFormat.simpleCurrency(
-        decimalDigits: 0, locale: Localizations.localeOf(context).toString());
     final ThemeData theme = Theme.of(context);
 
     final imageWidget = Image.asset(
@@ -48,24 +45,34 @@ class ProductCard extends StatelessWidget {
           aspectRatio: imageAspectRatio,
           child: imageWidget,
         ),
-        SizedBox(
+        Container(
           height: kTextBoxHeight * MediaQuery.of(context).textScaleFactor,
-          width: 121.0,
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                product.name,
-                style: theme.textTheme.labelLarge,
-                softWrap: false,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
+              Flexible(
+                flex: 3,
+                child: Text(
+                  product.name,
+                  style: theme.textTheme.labelLarge,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                  textAlign: TextAlign.center,
+                ),
               ),
               const SizedBox(height: 4.0),
-              Text(
-                formatter.format(product.price),
-                style: theme.textTheme.bodySmall,
+              Flexible(
+                flex: 2,
+                child: Text(
+                  product.price,
+                  style: theme.textTheme.bodySmall,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),

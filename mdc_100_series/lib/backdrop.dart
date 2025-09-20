@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'model/product.dart';
 import 'login.dart';
+import 'search.dart';
 
 // TODO: Add velocity constant (104)
 const double _kFlingVelocity = 2.0;
@@ -34,7 +35,7 @@ class _FrontLayer extends StatelessWidget {
     this.onTap,
     required this.child,
   }) : super(key: key);
- 
+
   final VoidCallback? onTap;
   final Widget child;
 
@@ -65,6 +66,7 @@ class _FrontLayer extends StatelessWidget {
     );
   }
 }
+
 // TODO: Add _BackdropTitle class (104)
 class _BackdropTitle extends AnimatedWidget {
   final void Function() onPress;
@@ -77,8 +79,8 @@ class _BackdropTitle extends AnimatedWidget {
     required this.onPress,
     required this.frontTitle,
     required this.backTitle,
-  }) : _listenable = listenable, 
-       super(key: key, listenable: listenable);
+  })  : _listenable = listenable,
+        super(key: key, listenable: listenable);
 
   final Animation<double> _listenable;
 
@@ -107,8 +109,9 @@ class _BackdropTitle extends AnimatedWidget {
                   begin: Offset.zero,
                   end: const Offset(1.0, 0.0),
                 ).evaluate(animation),
-                child: const ImageIcon(AssetImage('assets/diamond.png')),
-              )]),
+                child: const ImageIcon(AssetImage('assets/people.png')),
+              )
+            ]),
           ),
         ),
         // Here, we do a custom cross fade between backTitle and frontTitle.
@@ -147,10 +150,11 @@ class _BackdropTitle extends AnimatedWidget {
     );
   }
 }
+
 // TODO: Add _BackdropState class (104)
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
-  final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
+  final GlobalKey _backdropKey = GlobalKey(debugLabel: 'menu');
 
   // TODO: Add AnimationController widget (104)
   late AnimationController _controller;
@@ -218,13 +222,13 @@ class _BackdropState extends State<Backdrop>
         ),
         // TODO: Add a PositionedTransition (104)
         PositionedTransition(
-            rect: layerAnimation,
-            child: _FrontLayer(
-              // TODO: Implement onTap property on _BackdropState (104)
-              onTap: _toggleBackdropLayerVisibility,
-              child: widget.frontLayer,
-            ),
+          rect: layerAnimation,
+          child: _FrontLayer(
+            // TODO: Implement onTap property on _BackdropState (104)
+            onTap: _toggleBackdropLayerVisibility,
+            child: widget.frontLayer,
           ),
+        ),
       ],
     );
   }
@@ -253,28 +257,27 @@ class _BackdropState extends State<Backdrop>
         IconButton(
           icon: const Icon(
             Icons.search,
-            semanticLabel: 'login',
+            semanticLabel: 'search',
           ),
           onPressed: () {
             // TODO: Add open login (104)
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => LoginPage()),
+                  builder: (BuildContext context) => SearchPage()),
             );
           },
         ),
         IconButton(
           icon: const Icon(
-            Icons.tune,
+            Icons.logout,
             semanticLabel: 'login',
           ),
           onPressed: () {
             // TODO: Add open login (104)
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => LoginPage()),
+              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
             );
           },
         ),

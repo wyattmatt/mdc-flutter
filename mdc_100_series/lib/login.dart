@@ -37,10 +37,14 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 80.0),
             Column(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
+                Image.asset(
+                  'assets/logoUC.png',
+                  width: 120.0,
+                  fit: BoxFit.fitWidth,
+                ),
                 const SizedBox(height: 16.0),
                 Text(
-                  'SHRINE',
+                  'UC People',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ],
@@ -67,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               obscureText: true,
             ),
+            const SizedBox(height: 12.0),
             // TODO: Add button bar (101)
             OverflowBar(
               alignment: MainAxisAlignment.end,

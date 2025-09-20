@@ -56,7 +56,7 @@ class _ShrineAppState extends State<ShrineApp> {
                 currentCategory: _currentCategory,
                 onCategoryTap: _onCategoryTap,
               ),
-              frontTitle: const Text('SHRINE'),
+              frontTitle: const Text('UC People'),
               backTitle: const Text('MENU'),
             ),
       },
